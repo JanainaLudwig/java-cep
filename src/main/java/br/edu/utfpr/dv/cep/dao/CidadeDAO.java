@@ -93,7 +93,7 @@ public class CidadeDAO {
 		PreparedStatement stmt = Conexao.getInstance().getConexao().prepareStatement(
 				"SELECT city.*, state.title AS stateTitle, state.letter " +
 				"FROM city INNER JOIN state ON state.id=city.id_state " +
-				"WHERE city.title=? LIMIT 1");
+				"WHERE city.title=?");
 		stmt.setString(1, nome);
 		ResultSet rs = stmt.executeQuery();
 		List<Cidade> list = new ArrayList<Cidade>();
