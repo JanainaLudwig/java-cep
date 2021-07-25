@@ -16,6 +16,15 @@ public interface CepService {
 	public Estado[] listarEstados();
 	
 	@WebMethod
+	public Estado[] listarPorPopulacao();
+	
+	@WebMethod
 	public Cidade[] listarCidadesPorEstado(String sigla);
+
+	@WebMethod
+	public Cidade[] listarPorPopulacaoNoEstado(String sigla);
+	
+	@WebMethod
+	public Cidade[] buscarCidade(String nome);
 	
 }

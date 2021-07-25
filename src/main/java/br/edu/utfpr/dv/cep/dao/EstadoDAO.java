@@ -28,4 +28,22 @@ public class EstadoDAO {
 		return list;
 	}
 
+	public List<Estado> listarPorPopulacao() throws SQLException{
+		Statement stmt = Conexao.getInstance().getConexao().createStatement();
+		ResultSet rs = stmt.executeQuery("SELECT s.* FROM state s JOIN city c on s.id=c.id_state GROUP BY s.id ORDER BY sum(c.population) DESC");
+		List<Estado> list = new ArrayList<Estado>();
+		
+		while(rs.next()){
+			Estado e = new Estado();
+			
+			e.setId(rs.getInt("id"));
+			e.setNome(rs.getString("title"));
+			e.setSigla(rs.getString("letter"));
+			
+			list.add(e);
+		}
+		
+		return list;
+	}
+
 }

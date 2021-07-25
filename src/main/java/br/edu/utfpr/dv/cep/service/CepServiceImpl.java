@@ -21,6 +21,15 @@ public class CepServiceImpl implements CepService {
 		}
 	}
 
+	public Estado[] listarPorPopulacao() {
+		try {
+			return new EstadoDAO().listarPorPopulacao().toArray(new Estado[] {});
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 	public Cidade[] listarCidadesPorEstado(String sigla) {
 		try {
 			return new CidadeDAO().listarPorEstado(sigla).toArray(new Cidade[] {});
@@ -29,5 +38,24 @@ public class CepServiceImpl implements CepService {
 			return null;
 		}
 	}
+
+	public Cidade[] listarPorPopulacaoNoEstado(String sigla) {
+		try {
+			return new CidadeDAO().listarPorPopulacaoNoEstado(sigla).toArray(new Cidade[] {});
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public Cidade[] buscarCidade(String nome) {
+		try {
+			return new CidadeDAO().buscarCidade(nome).toArray(new Cidade[] {});
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 
 }
